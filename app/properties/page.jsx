@@ -1,7 +1,27 @@
-import properties from '@/properties.json';
 import PropertyCard from '@/components/PropertyCard';
 
-const PropertiePage = () => {
+async function fetchProperties() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching properties:', error);
+  }
+}
+
+const PropertiePage = async () => {
+  const properties = await fetchProperties();
+
+  //Sort properties by date
+  properties.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
