@@ -15,10 +15,9 @@ const UserSchema = new Schema(
       type: String,
     },
     bookmarks: [
-      // the array is of property ids
       {
         type: Schema.Types.ObjectId,
-        ref: 'Property', // the Model where we're getting the ids from
+        ref: 'Property',
       },
     ],
   },
