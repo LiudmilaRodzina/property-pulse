@@ -434,6 +434,30 @@ const PropertyAddForm = () => {
               />
               <label htmlFor="amenity_coffee_maker">Coffee Maker</label>
             </div>
+            <div>
+              <input
+                type="checkbox"
+                id="amenity_fireplace"
+                name="amenities"
+                value="Fireplace"
+                className="mr-2"
+                checked={fields.amenities.includes('Fireplace')}
+                onChange={handleAmenitiesChange}
+              />
+              <label htmlFor="amenity_coffee_maker">Fireplace</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="amenity_grill/bbq"
+                name="amenities"
+                value="Outdoor Grill/BBQ"
+                className="mr-2"
+                checked={fields.amenities.includes('Outdoor Grill/BBQ')}
+                onChange={handleAmenitiesChange}
+              />
+              <label htmlFor="amenity_coffee_maker">Outdoor Grill/BBQ</label>
+            </div>
           </div>
         </div>
 
