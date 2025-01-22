@@ -556,6 +556,7 @@ const PropertyAddForm = () => {
             name="seller_info.phone"
             className="border rounded w-full py-2 px-3"
             placeholder="Phone"
+            required
             value={fields.seller_info.phone}
             onChange={handleChange}
           />
