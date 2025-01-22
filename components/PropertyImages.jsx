@@ -17,7 +17,7 @@ const PropertyImages = ({ images }) => {
             >
               <Image
                 src={image}
-                alt=""
+                alt="Property image"
                 className="object-cover h-[400px] w-full rounded-xl"
                 width={0}
                 height={0}

@@ -15,7 +15,7 @@ export const GET = async (request) => {
     });
   } catch (error) {
     console.log(error);
-    return new Response('Error', { status: 500 });
+    return new Response('Something Went Wrong', { status: 500 });
   }
 };
 
