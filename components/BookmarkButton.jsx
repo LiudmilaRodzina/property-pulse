@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { FaBookmark } from 'react-icons/fa';
@@ -9,6 +9,40 @@ const BookmarkButton = ({ property }) => {
   const userId = session?.user?.id;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
+
+    const checkBookmarkStatus = async (request) => {
+      try {
+        const res = await fetch('/api/bookmarks/check', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            propertyId: property._id,
+          }),
+        });
+
+        if (res.status === 200) {
+          const data = await res.json();
+          setIsBookmarked(data.isBookmarked);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    checkBookmarkStatus();
+  }, [property._id, userId]);
+
+  if (loading) return <p className="text-center">Loading...</p>;
 
   const handleClick = async () => {
     if (!userId) {
