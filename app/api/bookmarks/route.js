@@ -28,7 +28,7 @@ export const GET = async (request) => {
 
 export const POST = async (request) => {
   try {
-    connectDB();
+    await connectDB();
 
     // get propertyId from body data
     const { propertyId } = await request.json();
