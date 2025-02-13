@@ -39,7 +39,7 @@ export const DELETE = async (request, { params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const sessionUser = await getSessionUser();
     if (!sessionUser || !sessionUser.user)
