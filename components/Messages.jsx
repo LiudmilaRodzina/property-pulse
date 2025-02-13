@@ -16,9 +16,6 @@ const Messages = () => {
           const data = await res.json();
           setMessages(data);
         }
-        if (res.status === 401) {
-          console.log('401');
-        }
       } catch (error) {
         console.error('Error fetching messages: ', error);
       } finally {

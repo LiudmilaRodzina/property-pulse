@@ -13,7 +13,7 @@ const fetchProperties = async () => {
     const data = res.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 };
@@ -30,7 +30,7 @@ const fetchProperty = async (id) => {
     const data = res.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };
