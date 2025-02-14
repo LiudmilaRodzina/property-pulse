@@ -3,6 +3,7 @@ import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import { ToastContainer } from 'react-toastify';
 import { GlobalProvider } from '@/context/GlobalContext';
+import 'photoswipe/dist/photoswipe.css';
 import '@/assets/styles/globals.css';
 
 export const metadata = {
