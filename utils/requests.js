@@ -11,7 +11,7 @@ const fetchProperties = async ({ showFeatured = false } = {}) => {
 
     if (!res.ok) throw new Error('Failed to fetch data');
 
-    const data = res.json();
+    const data = await res.json();
     return data;
   } catch (error) {
     console.error(error);
@@ -27,7 +27,7 @@ const fetchProperty = async (id) => {
 
     if (!res.ok) throw new Error('Failed to fecth data');
 
-    const data = res.json();
+    const data = await res.json();
     return data;
   } catch (error) {
     console.error(error);
