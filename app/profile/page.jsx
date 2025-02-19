@@ -112,9 +112,9 @@ const ProfilePage = () => {
                     <div className="mt-2">
                       <p className="text-lg font-semibold">{property.name}</p>
                       <p className="text-gray-600">
-                        Address:
-                        {property.location.street} {property.location.city}{' '}
-                        {property.location.state} {property.location.zipcode}
+                        Address: {property.location.street}{' '}
+                        {property.location.city} {property.location.state}{' '}
+                        {property.location.zipcode}
                       </p>
                     </div>
                     <div className="mt-2">
