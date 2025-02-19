@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import confetti from 'canvas-confetti';
+import Spinner from '@/components/Spinner';
 
 const PropertyAddForm = () => {
   const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState({
     type: '',
     name: '',
@@ -91,6 +94,7 @@ const PropertyAddForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const formData = new FormData(e.target);
@@ -104,12 +108,20 @@ const PropertyAddForm = () => {
         const newPropertyId = data.property._id;
         router.push(`/properties/${newPropertyId}`);
         toast.success('Property added successfully');
+        confetti({
+          particleCount: 150,
+          spread: 150,
+        });
       }
     } catch (error) {
       console.error(error);
       toast.error('Something went wrong');
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) return <Spinner loading={loading} />;
 
   return (
     mounted && (
