@@ -1,7 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const PropertyAddForm = () => {
+  const router = useRouter();
+
   const [mounted, setMounted] = useState(false);
   const [fields, setFields] = useState({
     type: '',
@@ -85,13 +89,31 @@ const PropertyAddForm = () => {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target);
+      const res = await fetch('/api/properties', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        const newPropertyId = data.property._id;
+        router.push(`/properties/${newPropertyId}`);
+        toast.success('Property added successfully');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Something went wrong');
+    }
+  };
+
   return (
     mounted && (
-      <form
-        action="/api/properties"
-        method="POST"
-        encType="multipart/form-data"
-      >
+      <form onSubmit={handleSubmit}>
         <h2 className="text-3xl text-center font-semibold mb-6">
           Add Property
         </h2>

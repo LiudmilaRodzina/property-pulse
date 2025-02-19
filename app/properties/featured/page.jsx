@@ -20,7 +20,7 @@ const FeaturedPropertiesPage = () => {
         }
       } catch (error) {
         console.error(error);
-        toast.error('Failed to fetch saved properties');
+        toast.error('Failed to fetch featured properties');
       } finally {
         setLoading(false);
       }
