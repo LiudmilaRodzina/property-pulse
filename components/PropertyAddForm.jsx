@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import confetti from 'canvas-confetti';
-import Spinner from '@/components/Spinner';
+import ButtonSpinner from '@/components/ButtonSpinner';
 
 const PropertyAddForm = () => {
   const router = useRouter();
@@ -120,8 +120,6 @@ const PropertyAddForm = () => {
       setLoading(false);
     }
   };
-
-  if (loading) return <Spinner loading={loading} />;
 
   return (
     mounted && (
@@ -614,13 +612,13 @@ const PropertyAddForm = () => {
             onChange={handleImageChange}
           />
         </div>
-
         <div>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
+            disabled={loading}
           >
-            Add Property
+            {loading ? <ButtonSpinner loading={loading} /> : 'Add Property'}
           </button>
         </div>
       </form>
