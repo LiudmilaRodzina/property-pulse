@@ -189,6 +189,7 @@ const PropertyAddForm = () => {
             name="location.street"
             className="border rounded w-full py-2 px-3 mb-2"
             placeholder="Street"
+            required
             value={fields.location.street}
             onChange={handleChange}
           />
@@ -233,6 +234,7 @@ const PropertyAddForm = () => {
             </label>
             <input
               type="number"
+              min="0"
               id="beds"
               name="beds"
               className="border rounded w-full py-2 px-3"
@@ -250,6 +252,7 @@ const PropertyAddForm = () => {
             </label>
             <input
               type="number"
+              min="0"
               id="baths"
               name="baths"
               className="border rounded w-full py-2 px-3"
@@ -267,6 +270,7 @@ const PropertyAddForm = () => {
             </label>
             <input
               type="number"
+              min="0"
               id="square_feet"
               name="square_feet"
               className="border rounded w-full py-2 px-3"
@@ -504,6 +508,7 @@ const PropertyAddForm = () => {
               </label>
               <input
                 type="number"
+                min="0"
                 id="weekly_rate"
                 name="rates.weekly"
                 className="border rounded w-full py-2 px-3"
@@ -517,6 +522,7 @@ const PropertyAddForm = () => {
               </label>
               <input
                 type="number"
+                min="0"
                 id="monthly_rate"
                 name="rates.monthly"
                 className="border rounded w-full py-2 px-3"
@@ -530,6 +536,7 @@ const PropertyAddForm = () => {
               </label>
               <input
                 type="number"
+                min="0"
                 id="nightly_rate"
                 name="rates.nightly"
                 className="border rounded w-full py-2 px-3"
@@ -553,6 +560,7 @@ const PropertyAddForm = () => {
             name="seller_info.name"
             className="border rounded w-full py-2 px-3"
             placeholder="Name"
+            required
             value={fields.seller_info.name}
             onChange={handleChange}
           />
@@ -588,7 +596,6 @@ const PropertyAddForm = () => {
             name="seller_info.phone"
             className="border rounded w-full py-2 px-3"
             placeholder="Phone"
-            required
             value={fields.seller_info.phone}
             onChange={handleChange}
           />

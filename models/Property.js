@@ -21,12 +21,15 @@ const PropertySchema = new Schema(
     location: {
       street: {
         type: String,
+        required: true,
       },
       city: {
         type: String,
+        required: true,
       },
       state: {
         type: String,
+        required: true,
       },
       zipcode: {
         type: String,
@@ -71,7 +74,6 @@ const PropertySchema = new Schema(
       },
       phone: {
         type: String,
-        required: true,
       },
     },
     images: [
